@@ -29,18 +29,18 @@ class CreateVistaCasProducto extends Migration
                 p.capacidad,
                 p.concentracion,
                 p.tipo_concentracion,
-                p.id AS id_producto,
+                p.id_producto AS id_producto,
                 p.id_cas,
-                hp.h,
+                hp.h AS h_producto,
                 hp.id_producto AS id_producto_hp,
-                hd.h,
+                hd.h AS h_desc,
                 hd.desc
             FROM
                 cas_productos cp
             LEFT JOIN
                 productos p ON cp.id = p.id_cas
             LEFT JOIN
-                h_producto hp ON p.id = hp.id_producto
+                h_producto hp ON p.id_producto = hp.id_producto
             LEFT JOIN
                 h_desc hd ON hp.h = hd.h
         ");
@@ -57,3 +57,4 @@ class CreateVistaCasProducto extends Migration
         DB::statement("DROP VIEW IF EXISTS vista_cas_producto");
     }
 }
+
