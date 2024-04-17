@@ -50,7 +50,5 @@
         </table>
     </div>
 
-    {{-- Pagination --}}
-    {{ $casProductos->links() }}
 </div>
 @endsection

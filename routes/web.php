@@ -17,6 +17,7 @@ use App\Http\Controllers\ProductoController;
 
 
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
+Route::delete('/productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
 
 Route::get('/', function () {
     return view('index');
