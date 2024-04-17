@@ -7,15 +7,17 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Producto;
 use App\Models\CasProducto;
+use App\Models\VistaCasProducto;
 
 class ProductoController extends Controller
 {
     public function index(): View
     {
-        $casProductos = CasProducto::with('productos')->get();
-        dd($casProductos);
+        // Obtener todos los datos de la vista vista_cas_producto utilizando el modelo CasProducto
+        $casProductos = VistaCasProducto::all();
 
-        return view('welcome', ['casProductos' => $casProductos]);
+        // Mostrar los resultados en la vista welcome
+        return view('index', ['casProductos' => $casProductos]);
 
     }
 

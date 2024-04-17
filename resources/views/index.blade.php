@@ -28,31 +28,29 @@
                 <th>Acciones</th>
             </tr>
             @foreach($casProductos as $casProducto)
-                @foreach($casProducto->productos as $producto)
-                    <tr>
-                        <td class="fw-bold">{{ $casProducto->nombre }}</td> <!-- Propiedad de CasProducto -->
-                        <td>{{ $producto->concentracion ?? ' ' }}</td> <!-- Propiedad de Producto -->
-                        <td>{{ $casProducto->cas }}</td> <!-- Propiedad de CasProducto -->
-                        <td>
-                            <span class="badge bg-warning fs-6">{{ $casProducto->fds }}</span> <!-- Propiedad de CasProducto -->
-                        </td>
-                        <td>{{ $casProducto->tipo }}</td> <!-- Propiedad de CasProducto -->
-                        <td>
-                            <a href="#" class="btn btn-warning">Editar</a>
-                            <form action="{{ route('productos.destroy', $producto->id) }}" method="post" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            @endforeach
+    <tr>
+        <td class="fw-bold">{{ $casProducto->nombre_cas_producto }}</td> <!-- Nombre del CasProducto -->
+        <td>{{ $casProducto->concentracion ?? ' ' }}</td> <!-- Concentración del Producto -->
+        <td>{{ $casProducto->cas }}</td> <!-- CAS del CasProducto -->
+        <td>
+            <span class="badge bg-warning fs-6">{{ $casProducto->fds }}</span> <!-- FDS del CasProducto -->
+        </td>
+        <td>{{ $casProducto->tipo }}</td> <!-- Tipo del CasProducto -->
+        <td>
+            <a href="#" class="btn btn-warning">Editar</a>
+            <form action="{{ route('productos.destroy', $casProducto->id_cas_producto) }}" method="post" class="d-inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+@endforeach
+
         </table>
     </div>
 
-        {{-- Pagination --}}
-        {{ $casProductos->links() }}
-    </div>
+    {{-- Pagination --}}
+    {{ $casProductos->links() }}
 </div>
 @endsection
